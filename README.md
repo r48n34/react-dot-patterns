@@ -1,13 +1,16 @@
 # react-dot-patterns  
 Generate DOM base dots patterns.  
 
+<a href="https://www.npmjs.com/package/react-dot-patterns"> <img src="https://img.shields.io/npm/v/react-dot-patterns" /> </a>
+
+
 ### Setup / Install:
 ``` bash
 npm i react-dot-patterns
 yarn add react-dot-patterns
 ```
 
-### Usage:
+### Basic Usage:
 ```jsx
 import { Dots } from "react-dot-patterns"
 
