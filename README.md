@@ -3,16 +3,16 @@ Generate DOM base dots patterns.
 
 <a href="https://www.npmjs.com/package/react-dot-patterns"> <img src="https://img.shields.io/npm/v/react-dot-patterns" /> </a>
 
-![https://github.com/r48n34/react-dot-patterns](/assert/shapes.png)
+![https://github.com/r48n34/react-dot-patterns](https://raw.githubusercontent.com/r48n34/react-dot-patterns/main/assert/shapes.png)
 
 
-### Setup / Install:
-``` bash
+### Setup / Install
+```bash
 npm i react-dot-patterns
 yarn add react-dot-patterns
 ```
 
-### Basic Usage:
+### Quickstart
 ```jsx
 import { Dots } from "react-dot-patterns"
 
@@ -41,7 +41,7 @@ export default ContactUs
 | item                      | JSX.Element          | null      | Replace the original dot with your own elements           |   
 | onItemClick               | Function             | () => {}  | Will callback a (x,y) that user clicked to regarding item |   
 
-### Full Usage:
+### Full Usage
 ```jsx
 import { Dots } from "react-dot-patterns"
 
@@ -88,5 +88,5 @@ function ContactUs() {
 export default ContactUs
 ```
 
-### license
+### License
 MIT
