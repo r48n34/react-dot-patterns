@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import React, { Fragment, forwardRef, useMemo } from "react";
 import { css } from '@emotion/css'
 
@@ -11,6 +11,7 @@ type DotsProps = {
     size?: number;
     item?: JSX.Element | null;
     style?: React.CSSProperties
+    onItemClick?: (i: number, j: number) => void
 }
 
 function DotsComp(
@@ -22,7 +23,9 @@ function DotsComp(
         margin = 5,
         color = "#bbb",
         item = null,
-        style = {}
+        style = {},
+        onItemClick = () => {},
+        ...props
     }   : DotsProps,
     ref : React.ForwardedRef<any>
 ) {
@@ -47,7 +50,7 @@ function DotsComp(
                     <div 
                         className={localStyle}
                         style={{ ...style }}
-                        ref={ref}
+                        onClick={() => onItemClick(i, j)}
                     >
                         {val}
                     </div>
@@ -73,25 +76,32 @@ function DotsComp(
     },[col, row, size, rotate, margin, color, item, style])
 
     return (
-        <div style={{
-            width: (size + margin * 2) * row,
-            height: (size + margin * 2) * col,
-            transform: `rotate(${rotate}deg)`
-        }}>
+        <div
+            ref={ref}
+            className={
+                css`
+                    width: ${(size + margin * 2) * row};
+                    height: ${(size + margin * 2) * col};
+                    transform: rotate(${rotate}deg)
+                `
+            }
+            {...props}
+        >
             { displayArr }
         </div>
     )
 }
 
-// DotsComp.PropTypes = {
-//     col: PropTypes.number,
-//     row: PropTypes.number,
-//     rotate: PropTypes.number,
-//     margin: PropTypes.number,
-//     color: PropTypes.number,
-//     size: PropTypes.number,
-//     item: PropTypes.element,
-//     style: PropTypes.object
-// }
+DotsComp.PropTypes = {
+    col: PropTypes.number,
+    row: PropTypes.number,
+    rotate: PropTypes.number,
+    margin: PropTypes.number,
+    color: PropTypes.number,
+    size: PropTypes.number,
+    item: PropTypes.element,
+    style: PropTypes.object,
+    onItemClick: PropTypes.func
+}
 
 export const Dots = forwardRef(DotsComp)
