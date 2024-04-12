@@ -2,6 +2,7 @@
 Generate DOM base dots patterns.  
 
 <a href="https://www.npmjs.com/package/react-dot-patterns"> <img src="https://img.shields.io/npm/v/react-dot-patterns" /> </a>
+<a href="https://github.com/r48n34/react-dot-patterns"><img src="https://img.shields.io/github/actions/workflow/status/r48n34/react-dot-patterns/test.yml" /></a>
 
 ![https://github.com/r48n34/react-dot-patterns](https://raw.githubusercontent.com/r48n34/react-dot-patterns/main/assert/shapes.png)
 
