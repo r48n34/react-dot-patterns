@@ -92,16 +92,20 @@ function DotsComp(
     )
 }
 
-DotsComp.PropTypes = {
+const Dots = forwardRef(DotsComp);
+
+Dots.propTypes = {
     col: PropTypes.number,
     row: PropTypes.number,
     rotate: PropTypes.number,
     margin: PropTypes.number,
-    color: PropTypes.number,
+    color: PropTypes.string,
     size: PropTypes.number,
     item: PropTypes.element,
     style: PropTypes.object,
     onItemClick: PropTypes.func
 }
 
-export const Dots = forwardRef(DotsComp)
+Dots.displayName = "Dots"
+
+export { Dots }
