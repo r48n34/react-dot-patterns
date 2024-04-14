@@ -34,10 +34,10 @@ export default ContactUs
 | ------------------------- | ----------------     | --------- | --------------------------------------------------------- | 
 | col                       | number               | 3         | Columns object count                                      | 
 | row                       | number               | 3         | Rows object count                                         | 
-| size                      | number | string      | 20        | Object size                                               |   
+| size                      | number / string      | 20        | Object size or CS unit string for size                    |   
 | rotate                    | number               | 0         | Rotate angle numbers                                      |   
-| margin                    | number | string      | 5         | Object margin size                                        |   
-| color                     | string               | "#bbb"    | color string code                                         |   
+| margin                    | number / string      | 5         | Object margin or CS unit string for size                  |   
+| color                     | string               | "#bbb"    | Color string code                                         |   
 | style                     | React.CSSProperties  | {}        | React CSSProperties object                                |   
 | item                      | JSX.Element          | null      | Replace the original dot with your own elements           |   
 | onItemClick               | Function             | () => {}  | Will callback a (x,y) that user clicked to regarding item |   
