@@ -1,6 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { Dots } from '../src/index'
+import { afterAll, expect, vi } from 'vitest';
 
 test('Renderer the HOC with normal usage', () => {
     const component = renderer.create(
@@ -33,4 +34,21 @@ test('Renderer the HOC with other row col props', () => {
 
     const componentJson = component.toJSON()
     expect(componentJson.children.length).toBe(row * col + col)
+})
+
+test('Renderer the HOC click', () => {
+
+    const consoleMock = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+    afterAll(() => {
+        consoleMock.mockReset();
+    });
+
+    const component = renderer.create(
+        <Dots onItemClick={consoleMock} color='#FF00FF'/>,
+    )
+
+    component.root.findByType("div").props.children[0].props.children[0][0].props.children.props.onClick();
+    expect(consoleMock).toHaveBeenCalledOnce();
+
 })

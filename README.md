@@ -34,9 +34,9 @@ export default ContactUs
 | ------------------------- | ----------------     | --------- | --------------------------------------------------------- | 
 | col                       | number               | 3         | Columns object count                                      | 
 | row                       | number               | 3         | Rows object count                                         | 
-| size                      | number               | 20        | Object size                                               |   
+| size                      | number | string      | 20        | Object size                                               |   
 | rotate                    | number               | 0         | Rotate angle numbers                                      |   
-| margin                    | number               | 5         | Object margin size                                        |   
+| margin                    | number | string      | 5         | Object margin size                                        |   
 | color                     | string               | "#bbb"    | color string code                                         |   
 | style                     | React.CSSProperties  | {}        | React CSSProperties object                                |   
 | item                      | JSX.Element          | null      | Replace the original dot with your own elements           |   
@@ -88,6 +88,11 @@ function ContactUs() {
 
 export default ContactUs
 ```
+
+### Dev logs
+
+#### 1.3.0
+1. Allow CSS string input for `margin` and `size` props.  
 
 ### License
 MIT

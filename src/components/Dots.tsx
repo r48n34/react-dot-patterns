@@ -6,12 +6,18 @@ type DotsProps = {
     col?: number
     row?: number
     rotate?: number;
-    margin?: number;
+    margin?: number | string;
     color?: string;
-    size?: number;
+    size?: number | string;
     item?: JSX.Element | null;
-    style?: React.CSSProperties
+    style?: React.CSSProperties;
     onItemClick?: (i: number, j: number) => void
+}
+
+function parseCssString(input: number | string){
+    return typeof input === "number" || (!isNaN(input as any))
+        ? input + "px"
+        : input;
 }
 
 function DotsComp(
@@ -32,10 +38,13 @@ function DotsComp(
 
     function makeArray(w: number, h: number, val: JSX.Element | null): JSX.Element[][] {
 
+        const sizeParse = parseCssString(size);
+        const marginParse = parseCssString(margin);
+
         const localStyle = css`
-            height: ${size}px;
-            width: ${size}px;
-            margin: ${margin}px;
+            height: ${sizeParse};
+            width:  ${sizeParse};
+            margin: ${marginParse};
             border-radius: 50%;
             background-color: ${item === null && color};
             display: inline-block;
@@ -80,8 +89,6 @@ function DotsComp(
             ref={ref}
             className={
                 css`
-                    width: ${(size + margin * 2) * row};
-                    height: ${(size + margin * 2) * col};
                     transform: rotate(${rotate}deg)
                 `
             }
@@ -98,9 +105,9 @@ Dots.propTypes = {
     col: PropTypes.number,
     row: PropTypes.number,
     rotate: PropTypes.number,
-    margin: PropTypes.number,
+    margin: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     color: PropTypes.string,
-    size: PropTypes.number,
+    size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     item: PropTypes.element,
     style: PropTypes.object,
     onItemClick: PropTypes.func
