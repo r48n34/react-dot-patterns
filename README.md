@@ -40,7 +40,7 @@ export default ContactUs
 | color                     | string               | "#bbb"    | Color string code                                         |   
 | style                     | React.CSSProperties  | {}        | React CSSProperties object                                |   
 | item                      | JSX.Element          | null      | Replace the original dot with your own elements           |   
-| evenRowShift              | number | string      | undefined | For even rows, init margin will be apper at first item    |   
+| evenRowShift              | number / string      | undefined | For even rows, init margin will be apper at first item    |   
 | onItemClick               | Function             | () => {}  | Will callback a (x,y) that user clicked to regarding item |   
 
 ### Full Usage
