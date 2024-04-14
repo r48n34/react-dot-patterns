@@ -36,6 +36,32 @@ test('Renderer the HOC with other row col props', () => {
     expect(componentJson.children.length).toBe(row * col + col)
 })
 
+test('Renderer the HOC with other row col evenRowShift props', () => {
+    const row = 5
+    const col = 5
+
+    const component = renderer.create(
+        <Dots row={row} col={col} evenRowShift={0}/>,
+    )
+
+    const componentJson = component.toJSON()
+    const total = (row * col + col) + ( Math.floor(col / 2) )
+    expect(componentJson.children.length).toBe(total)
+})
+
+test('Renderer the HOC with bigger row col evenRowShift props', () => {
+    const row = 30
+    const col = 24
+
+    const component = renderer.create(
+        <Dots row={row} col={col} evenRowShift={"10px"}/>,
+    )
+
+    const componentJson = component.toJSON()
+    const total = (row * col + col) + ( Math.floor(col / 2) )
+    expect(componentJson.children.length).toBe(total)
+})
+
 test('Renderer the HOC click', () => {
 
     const consoleMock = vi.spyOn(console, 'log').mockImplementation(() => undefined);

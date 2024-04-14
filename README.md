@@ -40,6 +40,7 @@ export default ContactUs
 | color                     | string               | "#bbb"    | Color string code                                         |   
 | style                     | React.CSSProperties  | {}        | React CSSProperties object                                |   
 | item                      | JSX.Element          | null      | Replace the original dot with your own elements           |   
+| evenRowShift              | number | string      | undefined | For even rows, init margin will be apper at first item    |   
 | onItemClick               | Function             | () => {}  | Will callback a (x,y) that user clicked to regarding item |   
 
 ### Full Usage
@@ -58,6 +59,7 @@ function ContactUs() {
                 color={"#bbb"}
                 item={null}
                 style={{}}
+                evenRowShift={undefined}
                 onItemClick={(i, j) => console.log(i, j, "clicked")}
             />
         </>
@@ -91,8 +93,11 @@ export default ContactUs
 
 ### Dev logs
 
+#### 1.4.0
+1. Adding `evenRowShift` features.   
+
 #### 1.3.0
-1. Allow CSS string input for `margin` and `size` props.  
+1. Allow CSS string input for `margin` and `size` props.    
 
 ### License
 MIT

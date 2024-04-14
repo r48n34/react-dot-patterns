@@ -6,11 +6,12 @@ type DotsProps = {
     col?: number
     row?: number
     rotate?: number;
-    margin?: number | string;
     color?: string;
+    margin?: number | string;
     size?: number | string;
     item?: JSX.Element | null;
     style?: React.CSSProperties;
+    evenRowShift?: number | string; 
     onItemClick?: (i: number, j: number) => void
 }
 
@@ -30,6 +31,7 @@ function DotsComp(
         color = "#bbb",
         item = null,
         style = {},
+        evenRowShift = undefined,
         onItemClick = () => {},
         ...props
     }   : DotsProps,
@@ -40,6 +42,7 @@ function DotsComp(
 
         const sizeParse = parseCssString(size);
         const marginParse = parseCssString(margin);
+        const evenRowShiftParse = evenRowShift !== undefined ? parseCssString(evenRowShift) : "";
 
         const localStyle = css`
             height: ${sizeParse};
@@ -50,10 +53,21 @@ function DotsComp(
             display: inline-block;
         `
 
+        const localEvenRowStyle = evenRowShift !== undefined 
+            ? css`
+                height: ${sizeParse};
+                width:  ${sizeParse};
+                margin-left: ${evenRowShiftParse};
+                border-radius: 50%;
+                display: inline-block;
+            ` 
+            : ``;
+
         let arr: JSX.Element[][] = [];
 
         for (let i = 0; i < h; i++) {
             arr[i] = [];
+
             for (let j = 0; j < w; j++) {
                 arr[i][j] = (
                     <div 
@@ -65,6 +79,11 @@ function DotsComp(
                     </div>
                 )
             }
+
+            if(i % 2 === 1 && evenRowShiftParse !== ""){
+                arr[i].unshift(<div className={localEvenRowStyle}></div>);
+            }
+
         }
 
         return arr;
@@ -105,6 +124,7 @@ Dots.propTypes = {
     col: PropTypes.number,
     row: PropTypes.number,
     rotate: PropTypes.number,
+    evenRowShift: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     margin: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     color: PropTypes.string,
     size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
