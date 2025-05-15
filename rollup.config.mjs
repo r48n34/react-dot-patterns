@@ -26,6 +26,7 @@ export default {
         filesize(),
         typescript({
             tsconfig: './tsconfig.json',
+            exclude: ["**/__tests__", "**/*.stories.*"]
         }),
         babel({
             babelHelpers: 'bundled',
